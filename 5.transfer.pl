@@ -9,6 +9,7 @@ my ($dir) = @ARGV;
 chdir $dir;
 
 open(SAC, "| sac") or die "Error in opening sac\n";
+print SAC "wild echo off\n";
 print SAC "r *SAC\n";
 print SAC "rglitches\n";
 print SAC "rmean;rtr;taper\n";

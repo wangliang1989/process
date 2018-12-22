@@ -8,7 +8,7 @@ use POSIX qw(strftime);
 $ENV{SAC_DISPLAY_COPYRIGHT}=0;
 
 @ARGV >= 1 or die "Usage: perl $0 breq-mail\n";
-my $dataroot = "/data";
+my $dataroot = $ENV{DATA_BASE};
 my %keys;
 open (IN, "< $dataroot/station_builder.txt") or die;
 foreach (<IN>) {

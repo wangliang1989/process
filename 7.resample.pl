@@ -27,7 +27,6 @@ open(SAC, "|sac") or die "Error in opening sac\n";
 foreach (glob "*.SAC") {
     my (undef, $delta0) = split /\s+/, `saclst delta f $_`;
     next if $delta == $delta0;  # 不需要重采样
-    print "$delta $delta0\n";
     print SAC "r $_ \n";
     # 用interpolate实现减采样或增采样
     # 若是减采样，则需要对数据做低通滤波以防止出现混淆效应
