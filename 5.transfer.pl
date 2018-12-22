@@ -18,5 +18,3 @@ print SAC "bp c 0.5 4 n 2 p 1\n";
 print SAC "w over\n";
 print SAC "q\n";
 close(SAC);
-
-chdir "..";

@@ -47,5 +47,3 @@ foreach my $file (glob "*.SAC") {
     rename $file, "$sta.n" if ($chn eq "BHN");
     rename $file, "$sta.z" if ($chn eq "BHZ");
 }
-
-chdir "..";

@@ -44,5 +44,3 @@ while (my ($key, $value) = each %sets) {
 print SAC "q \n";
 close(SAC);
 unlink(@to_del);
-
-chdir "..";
