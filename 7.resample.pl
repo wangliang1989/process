@@ -33,6 +33,7 @@ foreach (glob "*.SAC") {
     # 低通滤波时或许需要加上p 2以避免滤波引起的相移
     printf SAC "lp c %f\n", 0.5/$delta if $delta > $delta0;
     print SAC "interpolate delta $delta \n";
+    print SAC "ch knetwk 3J\n";
 
     print SAC "w over\n";
 }
@@ -42,7 +43,15 @@ close(SAC);
 # rename
 foreach my $file (glob "*.SAC") {
     my ($net, $sta, $loc, $chn) = (split /\./, $file)[6..9];
-    rename $file, "$sta.e" if ($chn eq "BHE");
-    rename $file, "$sta.n" if ($chn eq "BHN");
-    rename $file, "$sta.z" if ($chn eq "BHZ");
+    rename $file, "3J_$sta.e" if ($chn eq "BHE");
+    rename $file, "3J_$sta.n" if ($chn eq "BHN");
+    rename $file, "3J_$sta.z" if ($chn eq "BHZ");
 }
+open(SAC, "| sac") or die "Error in opening SAC\n";
+print SAC "wild echo off \n";
+print SAC "cuterr fillz \n";
+print SAC "cut 0 86580 \n";
+print SAC "r *.[enz] \n";
+print SAC "w over \n";
+print SAC "q \n";
+close(SAC);

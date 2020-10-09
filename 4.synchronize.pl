@@ -32,7 +32,7 @@ close(SAC);
 open(SAC, "| sac") or die "Error in opening SAC\n";
 print SAC "wild echo off \n";
 print SAC "cuterr fillz \n";
-print SAC "cut 0 86400 \n";
+print SAC "cut -100 86600 \n";
 print SAC "r *.SAC \n";
 print SAC "w over \n";
 print SAC "q \n";
